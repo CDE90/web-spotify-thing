@@ -1,14 +1,14 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
-import { getCurrentlyPlaying } from "~/server/spotify/spotify";
-import { db } from "~/server/db";
-import { users } from "~/server/db/schema";
+import { getCurrentlyPlaying } from "@/server/spotify/spotify";
+import { db } from "@/server/db";
+import { users } from "@/server/db/schema";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import {
     setUserTracking,
     getSpotifyToken,
     getSpotifyAccount,
-} from "~/server/lib";
+} from "@/server/lib";
 
 export default async function HomePage() {
     const { userId } = await auth();

@@ -1,7 +1,7 @@
 import "server-only";
 import { type clerkClient } from "@clerk/nextjs/server";
-import { db } from "~/server/db";
-import { users } from "~/server/db/schema";
+import { db } from "@/server/db";
+import { users } from "@/server/db/schema";
 
 export async function setUserTracking(
     enabled: boolean,

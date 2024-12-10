@@ -1,14 +1,17 @@
-import "~/styles/globals.css";
+import "@/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import {
     ClerkProvider,
-    SignInButton,
     SignedIn,
     SignedOut,
+    SignInButton,
     UserButton,
 } from "@clerk/nextjs";
+import { ThemeProvider } from "next-themes";
+import { ThemeSwitcher } from "@/components/ui/ThemeSwitcher";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "Create T3 App",
@@ -21,17 +24,30 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
     return (
         <ClerkProvider>
-            <html lang="en" className={`${GeistSans.variable}`}>
+            <html
+                lang="en"
+                className={`${GeistSans.variable} antialiased dark:bg-gray-950 dark:text-white`}
+                suppressHydrationWarning
+            >
                 <body>
-                    <header>
-                        <SignedOut>
-                            <SignInButton />
-                        </SignedOut>
-                        <SignedIn>
-                            <UserButton />
-                        </SignedIn>
-                    </header>
-                    <main>{children}</main>
+                    <ThemeProvider attribute="class">
+                        <header className="flex items-center justify-between gap-x-2 border-b-2 border-gray-200 p-4 text-sm font-medium text-gray-900 dark:border-gray-800 dark:text-gray-50">
+                            <div className="text-3xl font-bold">
+                                <Link href="/">Spotify Thing</Link>
+                            </div>
+                            <div className="flex items-center gap-x-2">
+                                <ThemeSwitcher />
+
+                                <SignedOut>
+                                    <SignInButton />
+                                </SignedOut>
+                                <SignedIn>
+                                    <UserButton />
+                                </SignedIn>
+                            </div>
+                        </header>
+                        <main>{children}</main>
+                    </ThemeProvider>
                 </body>
             </html>
         </ClerkProvider>

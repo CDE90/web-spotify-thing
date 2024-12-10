@@ -1,5 +1,5 @@
 import type { Albums, Artists, PlaybackState } from "./types";
-import { env } from "~/env";
+import { env } from "@/env";
 
 export async function getGlobalAccessToken() {
     const response = await fetch("https://accounts.spotify.com/api/token", {

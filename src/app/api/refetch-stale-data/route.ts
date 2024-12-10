@@ -3,15 +3,15 @@
 
 import { eq, asc } from "drizzle-orm";
 import { NextResponse } from "next/server";
-import { env } from "~/env";
-import { db } from "~/server/db";
-import * as schema from "~/server/db/schema";
+import { env } from "@/env";
+import { db } from "@/server/db";
+import * as schema from "@/server/db/schema";
 import {
     getGlobalAccessToken,
     getSeveralAlbums,
     getSeveralArtists,
-} from "~/server/spotify/spotify";
-import type { Album, Image } from "~/server/spotify/types";
+} from "@/server/spotify/spotify";
+import type { Album, Image } from "@/server/spotify/types";
 
 export async function GET(request: Request) {
     if (env.NODE_ENV === "production") {

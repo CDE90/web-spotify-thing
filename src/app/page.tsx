@@ -1,5 +1,5 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
-import { getCurrentlyPlaying } from "~/server/spotify/spotify";
+import { getCurrentlyPlaying } from "@/server/spotify/spotify";
 
 export default async function HomePage() {
     const { userId } = await auth();

@@ -5,11 +5,11 @@ import { clerkClient } from "@clerk/nextjs/server";
 import type { InferInsertModel } from "drizzle-orm";
 import { and, desc, eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
-import { env } from "~/env";
-import { db } from "~/server/db";
-import * as schema from "~/server/db/schema";
-import { getSpotifyToken } from "~/server/lib";
-import { getCurrentlyPlaying } from "~/server/spotify/spotify";
+import { env } from "@/env";
+import { db } from "@/server/db";
+import * as schema from "@/server/db/schema";
+import { getSpotifyToken } from "@/server/lib";
+import { getCurrentlyPlaying } from "@/server/spotify/spotify";
 
 type ArtistInsertModel = InferInsertModel<typeof schema.artists>;
 type AlbumInsertModel = InferInsertModel<typeof schema.albums>;
